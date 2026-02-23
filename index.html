@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stefano Verzillo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:            #f7f5f0;
+    --surface:       #ffffff;
+    --ink:           #18140e;
+    --ink-soft:      #4a4540;
+    --ink-muted:     #948f88;
+    --accent:        #1e3a5f;
+    --accent-light:  #dce5f0;
+    --gold:          #b8922a;
+    --gold-light:    #f5edd8;
+    --border:        #e0dbd2;
+    --border-strong: #c8c0b4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Spectral', serif;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--ink);
+    padding: 0 52px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    height: 54px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav .site-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #f0ece4;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  nav .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+
+  nav .nav-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: #a0988c;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav .nav-links a:hover { color: #f0ece4; }
+  nav .nav-links a.active { color: #d4b870; }
+
+  /* PAGE WRAPPER */
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 72px 36px 120px;
+  }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 72px;
+    padding-bottom: 52px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .hero-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-bio {
+    font-family: 'Spectral', serif;
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    line-height: 1.78;
+    max-width: 520px;
+    font-weight: 300;
+    text-align: justify;
+  }
+
+  .hero-bio p + p { margin-top: 14px; }
+
+  .hero-bio strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* IDENTITY CALLOUT */
+  .identity-callout {
+    border-left: 3px solid var(--gold);
+    padding: 13px 18px;
+    background: var(--gold-light);
+    margin-top: 24px;
+    max-width: 520px;
+  }
+
+  .identity-callout p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15.5px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .identity-callout strong {
+    color: #8b3a1a;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* PHOTO */
+  .hero-photo {
+    width: 180px;
+    height: 220px;
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .hero-photo span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 12px;
+    text-transform: uppercase;
+  }
+
+  /* CONTACT ROW */
+  .contact-row {
+    display: flex;
+    gap: 36px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .contact-item .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .contact-item .value {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-family: 'Spectral', serif;
+  }
+
+  .contact-item a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--accent-light);
+    transition: border-color 0.15s;
+  }
+
+  .contact-item a:hover { border-color: var(--accent); }
+
+  /* SECTION HEADING */
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .section-heading-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .section-heading-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .section-heading-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* INTERESTS GRID */
+  .interests-section {
+    margin-bottom: 72px;
+  }
+
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .interest-card {
+    background: var(--surface);
+    padding: 22px 24px;
+    transition: background 0.15s;
+  }
+
+  .interest-card:hover {
+    background: var(--gold-light);
+  }
+
+  .interest-card .number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .interest-card .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1.35;
+  }
+
+  /* AFFILIATIONS */
+  .affiliations-section {
+    margin-bottom: 72px;
+  }
+
+  .affil-list {
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .affil-list li {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .affil-role {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 2px;
+  }
+
+  .affil-name {
+    font-family: 'Spectral', serif;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .affil-name strong {
+    color: var(--ink);
+    font-weight: 500;
+    display: block;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 20px; gap: 20px; }
+    .page-wrapper { padding: 40px 20px 80px; }
+    .hero { grid-template-columns: 1fr; gap: 32px; }
+    .hero-text h1 { font-size: 40px; }
+    .interests-grid { grid-template-columns: 1fr 1fr; }
+    .affil-list li { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="site-name" href="index.html">Stefano Verzillo</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="cv.html">CV</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrapper">
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-label">Economist · Senior Researcher</div>
+      <h1>Stefano<br>Verzillo</h1>
+      <div class="hero-title">European Commission · JRC Ispra </div>
+      <div class="hero-bio">
+        <p>I am a Senior Economist at the <strong>European Commission – Joint Research Centre (JRC)</strong> in Ispra, Italy.</p>
+        <p>My research focuses on Counterfactual Impact Evaluation, Labour, Education &amp; Health Economics and the Economics of Science. I mainly work with administrative data and causal inference methods to study how reforms, incentives and policies shape individual, firm and organisational behaviours. On these topics I have published in various journals, including <em>Econometrica</em>, <em>The Review of Economics and Statistics</em> and <em>The Journal of the Royal Statistical Society (Series A)</em>.</p>
+        <p>Since 2012, I am also Adjunct Professor of <strong>Statistical Modeling, Data Mining &amp; Machine Learning</strong> at the <strong>University of Milan-Bicocca</strong>.</p>
+      </div>
+      <div class="identity-callout">
+        <p>My scientific work mainly adopts <strong>credible causal identification</strong> - natural experiments and quasi-experimental designs - with <strong>privileged EU administrative data</strong> from European institutions and national registries (e.g. IT, ES, NL).</p>
+      </div>
+      <div class="contact-row">
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <a href="mailto:stefano.verzillo@ec.europa.eu">stefano.verzillo@ec.europa.eu</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Affiliation</span>
+          <span class="value">JRC – European Commission</span>
+        </div>
+        <div class="contact-item">
+          <span class="label">Web</span>
+          <a href="https://sites.google.com/site/stefanoverzillo" target="_blank">Google Sites ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="photo.jpg" alt="Stefano Verzillo">
+    </div>
+  </div>
+
+  <!-- RESEARCH INTERESTS -->
+  <div class="interests-section">
+    <div class="section-heading">
+      <span class="section-heading-label">Fields</span>
+      <span class="section-heading-title">Research Interests</span>
+      <div class="section-heading-line"></div>
+    </div>
+    <div class="interests-grid">
+      <div class="interest-card">
+        <div class="number">01</div>
+        <div class="name">Policy Evaluation &amp; EU Regulation</div>
+      </div>
+      <div class="interest-card">
+        <div class="number">02</div>
+        <div class="name">Labour, Education &amp; Health Economics</div>
+      </div>
+      <div class="interest-card">
+        <div class="number">03</div>
+        <div class="name">Economics of Science &amp; Research Policy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFFILIATIONS AND EDITORIAL ROLES-->
+  <div class="affiliations-section">
+    <div class="section-heading">
+      <span class="section-heading-label">Positions</span>
+      <span class="section-heading-title">Affiliations and Editorial Roles</span>
+      <div class="section-heading-line"></div>
+    </div>
+    <ul class="affil-list">
+      <li>
+        <span class="affil-role">Current</span>
+        <span class="affil-name">
+          <strong>European Commission – Joint Research Centre (JRC)</strong>
+          Senior Economist
+        </span>
+      </li>
+      <li>
+        <span class="affil-role">Since 2025</span>
+        <span class="affil-name">
+          <strong>Southern Economic Journal</strong>
+          Associate Editor
+        </span>
+      </li>
+      <li>
+        <span class="affil-role">Since 2012</span>
+        <span class="affil-name">
+          <strong>University of Milan-Bicocca</strong>
+          Adjunct Professor - Statistical Modeling, Data Mining &amp; Machine Learning
+        </span>
+      </li>
+      <li>
+        <span class="affil-role">Previous</span>
+        <span class="affil-name">
+          <strong>Università degli Studi di Milano – DEMM</strong>
+          Department of Economics, Management and quantitative Methods
