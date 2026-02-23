@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Stefano Verzillo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:            #f7f5f0;
+    --surface:       #ffffff;
+    --ink:           #18140e;
+    --ink-soft:      #4a4540;
+    --ink-muted:     #948f88;
+    --accent:        #1e3a5f;
+    --accent-warm:   #8b3a1a;
+    --accent-light:  #dce5f0;
+    --gold:          #b8922a;
+    --gold-light:    #f5edd8;
+    --border:        #e0dbd2;
+    --border-strong: #c8c0b4;
+
+    /* status palette */
+    --forthcoming:    #1a4a2e;
+    --forthcoming-bg: #e8f4ec;
+    --submitted:      #6b3d0a;
+    --submitted-bg:   #fdf0e0;
+    --published:      #1e3a5f;
+    --published-bg:   #dce5f0;
+    --wp:             #4a2d6a;
+    --wp-bg:          #f0eaf8;
+    --inprogress:     #4a3820;
+    --inprogress-bg:  #f5ece0;
+    --eu-data:        #8b3a1a;
+    --eu-data-bg:     #fdf0e0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Spectral', serif;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--ink);
+    padding: 0 52px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    height: 54px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav .site-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #f0ece4;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  nav .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+
+  nav .nav-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: #a0988c;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav .nav-links a:hover { color: #f0ece4; }
+  nav .nav-links a.active { color: #d4b870; }
+
+  /* PAGE WRAPPER */
+  .page-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 36px 120px;
+  }
+
+  /* HEADER */
+  .page-header {
+    margin-bottom: 64px;
+  }
+
+  .page-header-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .scientific-identity {
+    border-left: 3px solid var(--gold);
+    padding: 14px 20px;
+    background: var(--gold-light);
+    margin-bottom: 0;
+    max-width: 680px;
+  }
+
+  .scientific-identity p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16.5px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .scientific-identity strong {
+    color: var(--accent-warm);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* SIGNATURE WORK SECTION */
+  .signature-section {
+    margin-bottom: 72px;
+  }
+
+  .signature-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .signature-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .signature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .signature-card {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .signature-card:first-of-type {
+    border-top: 1px solid var(--border);
+  }
+
+  .sig-venue-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .sig-journal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .sig-sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    flex-shrink: 0;
+  }
+
+  .sig-id-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--ink-muted);
+    letter-spacing: 0.03em;
+  }
+
+  .paper-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18.5px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.38;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+
+  .paper-authors {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    margin-bottom: 10px;
+  }
+
+  .paper-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .paper-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    padding: 2px 8px;
+    letter-spacing: 0.04em;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .paper-links a:hover { background: var(--accent); color: white; }
+
+  .badge-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+  }
+
+  .status-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  .status-forthcoming  { background: var(--forthcoming-bg);  color: var(--forthcoming); }
+  .status-submitted    { background: var(--submitted-bg);    color: var(--submitted); }
+  .status-published    { background: var(--published-bg);    color: var(--published); }
+  .status-wp           { background: var(--wp-bg);           color: var(--wp); }
+  .status-inprogress   { background: var(--inprogress-bg);   color: var(--inprogress); }
+  .status-rr           { background: var(--submitted-bg);    color: var(--submitted); }
+
+  .eu-data-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    background: var(--eu-data-bg);
+    color: var(--eu-data);
+    border: 1px solid #d4a870;
+    white-space: nowrap;
+  }
+
+  /* THEME SECTIONS */
+  .theme-section {
+    margin-bottom: 64px;
+  }
+
+  .theme-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-strong);
+  }
+
+  .theme-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+    min-width: 20px;
+  }
+
+  .theme-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+
+  .paper-card {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .paper-card:first-of-type { border-top: 1px solid var(--border); }
+
+  .paper-venue {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .paper-venue em { font-style: italic; }
+
+  /* PLAIN LIST */
+  .plain-list {
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .plain-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-family: 'Spectral', serif;
+  }
+
+  .plain-list li a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--accent-light);
+    transition: border-color 0.15s;
+  }
+
+  .plain-list li a:hover { border-color: var(--accent); }
+
+  .ref-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .ref-authors {
+    font-weight: 300;
+    color: var(--ink-muted);
+    font-size: 13px;
+  }
+
+  /* SEMINARS */
+  .seminars-section { margin-bottom: 64px; }
+
+  .seminar-year {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .seminar-year:first-child { border-top: 1px solid var(--border); }
+
+  .year-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* REFEREE */
+  .referee-section { margin-bottom: 64px; }
+
+  .referee-text {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  /* DIVIDER HEADING */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 72px 0 40px;
+  }
+
+  .section-divider-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; gap: 20px; }
+    .page-wrapper { padding: 40px 20px 80px; }
+    .paper-card, .signature-card { grid-template-columns: 1fr; }
+    .badge-group { flex-direction: row; align-items: flex-start; }
+    .page-header h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="site-name" href="index.html">Stefano Verzillo</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="cv.html">CV</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="teaching.html">Teaching</a></li>
+  </ul>
+</nav>
+  
+<div class="page-wrapper">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-label">Research</div>
+    <h1>Publications </h1>
+    <div class="scientific-identity">
+      <p>My scientific work mainly adopts <strong>credible causal identification strategies</strong> - natural experiments and quasi-experimental designs - applied to <strong>privileged administrative data</strong> from EU institutions and national registries (e.g. IT, ES, NL). Thematic focus spans policy evaluation, health economics, labour markets, and the economics of science.</p>
+    </div>
+  </div>
+
+  <!-- SIGNATURE WORK -->
+  <div class="signature-section">
+    <div class="signature-header">
+      <span class="signature-label">★ Flagship papers</span>
+      <span class="signature-title">Selected Publications</span>
+    </div>
+
+    <div class="signature-card">
+      <div>
+        <div class="sig-venue-row">
+          <span class="sig-journal">Econometrica</span>
+          <span class="sig-sep"></span>
+          <span class="sig-id-note">Optimal transport · NL registry data · Matching models </span>
+        </div>
+        <div class="paper-title">"Assortative Matching on Income"</div>
+        <div class="paper-authors">Chiappori P.A., Fiorio C., Galichon A. and Verzillo S.</div>
+        <div class="paper-links">
+          <a href="https://www.econometricsociety.org/publications/econometrica/journal-materials/forthcoming-papers" target="_blank">Journal</a>
+          <a href="http://humcap.uchicago.edu/RePEc/hka/wpaper/Chiappori_Fiorio_Galichon_etal_2022_assortative-matching-income.pdf" target="_blank">HCEO WP</a>
+          <a href="https://zenodo.org/records/17301245" target="_blank">Replication Package</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-forthcoming">Forthcoming</span>
+      </div>
+    </div>
+
+    <div class="signature-card">
+      <div>
+        <div class="sig-venue-row">
+          <span class="sig-journal">J. Econ. Behavior &amp; Org.</span>
+          <span class="sig-sep"></span>
+          <span class="sig-id-note">DiD · EU firm-level data · Covid-Aid treatment</span>
+        </div>
+        <div class="paper-title">"The Impact of Financial Support to Firms During Crises: The Case of Covid-Aid in EU"</div>
+        <div class="paper-authors">Canzian G., Crivellaro E., Duso T., Ferrara A., Sasso A. and Verzillo S.</div>
+        <div class="paper-links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0167268125004561?ref=pdf_download&fr=RR-2&rr=9d1d5684bc395258" target="_blank">Journal</a>
+          <a href="https://www.diw.de/documents/publikationen/73/diw_01.c.947586.de/dp2116.pdf" target="_blank">DIW</a>
+          <a href="https://www.cesifo.org/en/publications/2025/working-paper/impact-financial-support-firms-during-crises-case-covid-aid-eu" target="_blank">CESifo</a>
+          <a href="https://cepr.org/system/files/publication-files/DP20172.pdf" target="_blank">CEPR</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-forthcoming">Forthcoming</span>
+        <span class="eu-data-badge">EU Data</span>
+      </div>
+    </div>
+
+    <div class="signature-card">
+      <div>
+        <div class="sig-venue-row">
+          <span class="sig-journal">Intl. J. Industrial Org.</span>
+          <span class="sig-sep"></span>
+          <span class="sig-id-note">DiD · EU telecom regulator data · RLAH Regulation</span>
+        </div>
+        <div class="paper-title">"Evaluating the Impact of Price Caps — Evidence from the European Roam-Like-at-Home Regulation"</div>
+        <div class="paper-authors">Canzian G., Mazzarella G., Ronchail L., Verboven F. and Verzillo S.</div>
+        <div class="paper-links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0167718724000705" target="_blank">Journal</a>
+          <a href="https://cepr.org/active/publications/discussion_papers/dp.php?dpno=16554" target="_blank">CEPR</a>
+          <a href="https://www.cesifo.org/en/publikationen/2021/working-paper/evaluating-impact-price-caps-evidence-european-roam-home" target="_blank">CESifo</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2025</span>
+        <span class="eu-data-badge">EU Data</span>
+      </div>
+    </div>
+
+    <div class="signature-card">
+      <div>
+        <div class="sig-venue-row">
+          <span class="sig-journal">JRSS – Series A</span>
+          <span class="sig-sep"></span>
+          <span class="sig-id-note">Spatial RDD · Administrative borders · Italian health records</span>
+        </div>
+        <div class="paper-title">"Administrative border effects in Covid-19 related mortality"</div>
+        <div class="paper-authors">Berta P., Bratti M., Fiorio C.V., Pisoni E. and Verzillo S.</div>
+        <div class="paper-links">
+          <a href="https://academic.oup.com/jrsssa/advance-article/doi/10.1093/jrsssa/qnae091/7755170" target="_blank">Journal</a>
+          <a href="https://docs.iza.org/dp14930.pdf" target="_blank">IZA</a>
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3962989" target="_blank">SSRN</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2025</span>
+      </div>
+    </div>
+
+    <div class="signature-card">
+      <div>
+        <div class="sig-venue-row">
+          <span class="sig-journal">Rev. Econ. &amp; Statistics</span>
+          <span class="sig-sep"></span>
+          <span class="sig-id-note">IV · Italian academic registries · Career incentives</span>
+        </div>
+        <div class="paper-title">"Incentives and Careers in Academia: Theory and Empirical Analysis"</div>
+        <div class="paper-authors">Checchi D., De Fraja G. and Verzillo S.</div>
+        <div class="paper-venue">Vol. 103(4), pp. 786–802</div>
+        <div class="paper-links">
+          <a href="https://www.mitpressjournals.org/doi/pdf/10.1162/rest_a_00916" target="_blank">Journal</a>
+          <a href="https://cepr.org/publications/dp10084" target="_blank">CEPR</a>
+          <a href="https://www.iza.org/publications/dp/8345/publish-or-perish-incentives-and-careers-in-italian-academia" target="_blank">IZA</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2021</span>
+      </div>
+    </div>
+
+    <div class="signature-card">
+      <div>
+        <div class="sig-venue-row">
+          <span class="sig-journal">Working Paper</span>
+          <span class="sig-sep"></span>
+          <span class="sig-id-note">RDD &amp; DiD · ERC administrative records · Long-run treatment effects</span>
+        </div>
+        <div class="paper-title">"The Long-Term Causal Effects of Winning an ERC Grant"</div>
+        <div class="paper-authors">Ghirelli C., Havari E., Meroni E. and Verzillo S.</div>
+        <div class="paper-venue">IZA Discussion Paper N. 16108 · Banco de España WP N. 2313</div>
+        <div class="paper-links">
+          <a href="https://docs.iza.org/dp16108.pdf" target="_blank">IZA</a>
+          <a href="https://www.bde.es/f/webbde/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosTrabajo/23/Files/dt2313e.pdf" target="_blank">Banco de España</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-submitted">Submitted</span>
+        <span class="eu-data-badge">EU Data</span>
+      </div>
+    </div>
+
+  </div><!-- /signature -->
+
+  <div class="section-divider">
+    <span class="section-divider-label">Full research record — by theme</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- SECTION 1: Policy Evaluation & EU Regulation -->
+  <div class="theme-section">
+    <div class="theme-header">
+      <span class="theme-number">01</span>
+      <h2 class="theme-title">Policy Evaluation &amp; EU Regulation</h2>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The Impact of Financial Support to Firms During Crises: The Case of Covid-Aid in EU"</div>
+        <div class="paper-authors">Canzian G., Crivellaro E., Duso T., Ferrara A., Sasso A. and Verzillo S.</div>
+        <div class="paper-venue"><em>Journal of Economic Behavior and Organizations</em></div>
+        <div class="paper-links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0167268125004561?ref=pdf_download&fr=RR-2&rr=9d1d5684bc395258" target="_blank">Journal</a>
+          <a href="https://cepr.org/system/files/publication-files/DP20172.pdf" target="_blank">CEPR</a>
+          <a href="https://www.diw.de/documents/publikationen/73/diw_01.c.947586.de/dp2116.pdf" target="_blank">DIW</a>
+          <a href="https://www.cesifo.org/en/publications/2025/working-paper/impact-financial-support-firms-during-crises-case-covid-aid-eu" target="_blank">CESifo</a>
+  
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-forthcoming">Forthcoming</span>
+        <span class="eu-data-badge">EU Data</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The Long-Term Causal Effects of Winning an ERC Grant"</div>
+        <div class="paper-authors">Ghirelli C., Havari E., Meroni E. and Verzillo S.</div>
+        <div class="paper-venue">IZA Discussion Paper N. 16108 · Banco de España WP N. 2313</div>
+        <div class="paper-links">
+          <a href="https://docs.iza.org/dp16108.pdf" target="_blank">IZA</a>
+          <a href="https://www.bde.es/f/webbde/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosTrabajo/23/Files/dt2313e.pdf" target="_blank">Banco de España</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-submitted">Submitted</span>
+        <span class="eu-data-badge">EU Data</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Evaluating the Impact of Price Caps — Evidence from the European Roam-Like-at-Home Regulation"</div>
+        <div class="paper-authors">Canzian G., Mazzarella G., Ronchail L., Verboven F. and Verzillo S.</div>
+        <div class="paper-venue"><em>International Journal of Industrial Organization</em>, 2024</div>
+        <div class="paper-links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0167718724000705" target="_blank">Journal</a>
+          <a href="https://cepr.org/active/publications/discussion_papers/dp.php?dpno=16554" target="_blank">CEPR</a>
+          <a href="https://www.cesifo.org/en/publikationen/2021/working-paper/evaluating-impact-price-caps-evidence-european-roam-home" target="_blank">CESifo</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2025</span>
+        <span class="eu-data-badge">EU Data</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Does labour protection influence mental-health responses to employment shocks? Evidence on older workers in Europe"</div>
+        <div class="paper-authors">Di Novi C., Paruolo P. and Verzillo S.</div>
+        <div class="paper-venue"><em>Economic Modelling</em>, Vol. 126, 106406</div>
+        <div class="paper-links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0264999323002183" target="_blank">Journal</a>
+          <a href="https://www.york.ac.uk/media/economics/documents/hedg/workingpapers/2022/2203.pdf" target="_blank">HEDG</a>
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4031714" target="_blank">SSRN</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2023</span>
+        <span class="eu-data-badge">EU Data</span>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- SECTION 2: Labour Economics, Education & Science of Science -->
+  <div class="theme-section">
+    <div class="theme-header">
+      <span class="theme-number">02</span>
+      <h2 class="theme-title">Labour Economics, Education &amp; Science of Science</h2>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"A New Algorithm for Evaluating Scientific Research"</div>
+        <div class="paper-authors">De Fraja G. and Verzillo S.</div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-inprogress">In Progress</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Assortative Matching on Income"</div>
+        <div class="paper-authors">Chiappori P.A., Fiorio C., Galichon A. and Verzillo S.</div>
+        <div class="paper-venue"><em>Econometrica</em> — forthcoming</div>
+        <div class="paper-links">
+          <a href="https://www.econometricsociety.org/publications/econometrica/journal-materials/forthcoming-papers" target="_blank">Journal</a>
+          <a href="http://humcap.uchicago.edu/RePEc/hka/wpaper/Chiappori_Fiorio_Galichon_etal_2022_assortative-matching-income.pdf" target="_blank">HCEO WP</a>
+  
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-forthcoming">Forthcoming</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"How to Pay for Scientific Research"</div>
+        <div class="paper-authors">Checchi D., De Fraja G., Marchiori C., Minelli E. and Verzillo S.</div>
+        <div class="paper-venue">C.E.P.R. Discussion Paper N. 19083</div>
+        <div class="paper-links">
+          <a href="https://cepr.org/publications/dp19083" target="_blank">CEPR</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-submitted">Submitted</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The Atlas of Data Science Research"</div>
+        <div class="paper-authors">Montanelli S., Picascia S., Salini S. and Verzillo S.</div>
+        <div class="paper-venue"><em>IEEE Access</em>, Vol. 13, pp. 175943–175959</div>
+        <div class="paper-links">
+          <a href="https://ieeexplore.ieee.org/document/11194242" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2025</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Incentives and Careers in Academia: Theory and Empirical Analysis"</div>
+        <div class="paper-authors">Checchi D., De Fraja G. and Verzillo S.</div>
+        <div class="paper-venue"><em>The Review of Economics and Statistics</em>, Vol. 103(4), pp. 786–802</div>
+        <div class="paper-links">
+          <a href="https://www.mitpressjournals.org/doi/pdf/10.1162/rest_a_00916" target="_blank">Journal</a>
+          <a href="https://cepr.org/publications/dp10084" target="_blank">CEPR</a>
+          <a href="https://www.iza.org/publications/dp/8345/publish-or-perish-incentives-and-careers-in-italian-academia" target="_blank">IZA</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2021</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Have you read this? An empirical comparison of the British REF peer review and the Italian VQR bibliometric algorithm"</div>
+        <div class="paper-authors">Checchi D., Ciolfi A., De Fraja G., Mazzotta I. and Verzillo S.</div>
+        <div class="paper-venue"><em>Economica</em>, Vol. 88(352), pp. 1107–1129</div>
+        <div class="paper-links">
+          <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ecca.12373" target="_blank">Journal</a>
+          <a href="https://cepr.org/active/publications/discussion_papers/dp.php?dpno=13521" target="_blank">CEPR</a>
+          <a href="http://ftp.iza.org/dp12155.pdf" target="_blank">IZA</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2021</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The 'gravity' of quality: Research quality and the attractiveness of universities in Italy"</div>
+        <div class="paper-authors">Bratti M. and Verzillo S.</div>
+        <div class="paper-venue"><em>Regional Studies</em>, Vol. 53(10), pp. 1385–1396</div>
+        <div class="paper-links">
+          <a href="https://www.tandfonline.com/doi/full/10.1080/00343404.2019.1566701" target="_blank">Journal</a>
+          <a href="https://www.iza.org/publications/dp/11026/the-gravity-of-quality-research-quality-and-universities-attractiveness-in-italy" target="_blank">IZA</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2019</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Network Management as a Contingent Activity"</div>
+        <div class="paper-authors">Cristofoli D., Trivellato B. and Verzillo S.</div>
+        <div class="paper-venue"><em>Public Management Review</em>, Vol. 21(12), pp. 1775–1800</div>
+        <div class="paper-links">
+          <a href="https://www.tandfonline.com/doi/full/10.1080/14719037.2019.1577905" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2019</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Selections from Ordered Sets"</div>
+        <div class="paper-authors">Checchi D., De Fraja G. and Verzillo S.</div>
+        <div class="paper-venue"><em>Social Choice and Welfare</em>, Vol. 50(4), pp. 677–703</div>
+        <div class="paper-links">
+          <a href="https://link.springer.com/article/10.1007/s00355-017-1101-5" target="_blank">Journal</a>
+          <a href="https://www.iza.org/en/publications/dp/8344/and-the-winners-are-an-axiomatic-approach-to-selection-from-a-set" target="_blank">IZA</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2018</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Family Splitting versus Joint Taxation: a case-study"</div>
+        <div class="paper-authors">Verzillo S., Santoro A. and Mezzanzanica M.</div>
+        <div class="paper-venue"><em>Economia Politica</em>, Vol. 34(2), pp. 337–354</div>
+        <div class="paper-links">
+          <a href="http://link.springer.com/article/10.1007/s40888-016-0039-x" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2017</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Heterogeneous Economic Returns to Higher Education: Evidence from Italy"</div>
+        <div class="paper-authors">Lovaglio P.G. and Verzillo S.</div>
+        <div class="paper-venue"><em>Quality and Quantity</em>, Vol. 50(2), pp. 791–822</div>
+        <div class="paper-links">
+          <a href="http://link.springer.com/article/10.1007/s11135-015-0176-2" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2016</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Human Capital Estimation in Higher Education"</div>
+        <div class="paper-authors">Lovaglio P.G., Vacca G. and Verzillo S.</div>
+        <div class="paper-venue"><em>Advances in Data Analysis and Classification</em>, Vol. 10(4), pp. 465–489</div>
+        <div class="paper-links">
+          <a href="http://link.springer.com/article/10.1007/s11634-016-0259-5" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2016</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The Effects of Decentralization on Academic Recruitment in Italy"</div>
+        <div class="paper-authors">Battistin E., Checchi D. and Verzillo S.</div>
+        <div class="paper-venue"><em>Rassegna Italiana di Valutazione</em>, Vol. 58, pp. 50–79</div>
+        <div class="paper-links">
+          <a href="https://www.francoangeli.it/Riviste/Scheda_Rivista.aspx?IDArticolo=53041" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2014</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 3: Health Economics -->
+  <div class="theme-section">
+    <div class="theme-header">
+      <span class="theme-number">03</span>
+      <h2 class="theme-title">Health Economics &amp; Healthcare</h2>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The Health Price of Traffic: Evidence from Public Transport Strikes"</div>
+        <div class="paper-authors">Berta P., Muzzì S., Siciliani L. and Verzillo S.</div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-inprogress">In Progress</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The Impact of Ageing on Health Expenditure"</div>
+        <div class="paper-authors">Bersani C., Berta P., Muzzì S., Serrano Alarcón M. and Verzillo S.</div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-inprogress">In Progress</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Optimal Healthcare Contracts: Theory and Empirical Evidence"</div>
+        <div class="paper-authors">Berta P., De Fraja G. and Verzillo S.</div>
+        <div class="paper-venue">R&amp;R at <em>JEMS</em></div>
+        <div class="paper-links">
+        <a href="https://www.york.ac.uk/media/economics/documents/hedg/workingpapers/1833.pdf" target="_blank">HEDG</a>
+      </div>
+    </div>
+      <div class="badge-group">
+        <span class="status-badge status-rr">Revise &amp; Resubmit</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The Impact of COVID-19 Pandemic on Non-deferrable Diseases"</div>
+        <div class="paper-authors">Muzzì S., Berta P., Lovaglio P.G. and Verzillo S.</div>
+        <div class="paper-venue">R&amp;R at <em>Research in Economics</em></div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-rr">Revise &amp; Resubmit</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Administrative border effects in Covid-19 related mortality"</div>
+        <div class="paper-authors">Berta P., Bratti M., Fiorio C.V., Pisoni E. and Verzillo S.</div>
+        <div class="paper-venue"><em>Journal of the Royal Statistical Society – Series A</em>, 2024</div>
+        <div class="paper-links">
+          <a href="https://academic.oup.com/jrsssa/advance-article/doi/10.1093/jrsssa/qnae091/7755170" target="_blank">Journal</a>
+          <a href="https://docs.iza.org/dp14930.pdf" target="_blank">IZA</a>
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3962989" target="_blank">SSRN</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2024</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The impact of COVID-19 pandemic on AMI and Stroke mortality in Lombardy"</div>
+        <div class="paper-authors">Rossi C., Berta P., Curello S., Lovaglio P.G., Magoni M., Metra M., Roccaro A.M., Verzillo S. and Vittadini G.</div>
+        <div class="paper-venue"><em>PLOS ONE</em>, 16(10) e0257910</div>
+        <div class="paper-links">
+          <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0257910" target="_blank">Journal</a>
+          <a href="https://www.medrxiv.org/content/10.1101/2021.04.15.21255255v1.full.pdf" target="_blank">Medrxiv</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2021</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"How have casemix, cost and hospital stay of inpatients in the last year of life changed over the past decade? Evidence from Italy"</div>
+        <div class="paper-authors">Berta P., Lovaglio P.G. and Verzillo S.</div>
+        <div class="paper-venue"><em>Health Policy</em>, Vol. 125(8), pp. 1031–1039</div>
+        <div class="paper-links">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0168851021001639" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2021</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"A Bivariate Prediction Approach for Adapting the Health Care System Response to the Spread of COVID-19"</div>
+        <div class="paper-authors">Berta P., Lovaglio P.G., Paruolo P. and Verzillo S.</div>
+        <div class="paper-venue"><em>PLOS ONE</em>, 15(10) e0240150</div>
+        <div class="paper-links">
+          <a href="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0240150&type=printable" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2020</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Real Time Forecasting of Covid-19 Intensive Care Units demand"</div>
+        <div class="paper-authors">Berta P., Lovaglio P.G., Paruolo P. and Verzillo S.</div>
+        <div class="paper-venue">HEDG Working Paper 20/16</div>
+        <div class="paper-links">
+          <a href="https://www.york.ac.uk/media/economics/documents/hedg/workingpapers/2020/2016.pdf" target="_blank">HEDG</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-wp">Working Paper</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"Evaluating Organizational Change in Healthcare: the Patient-Centered Hospital model"</div>
+        <div class="paper-authors">Fiorio C., Gorli M. and Verzillo S.</div>
+        <div class="paper-venue"><em>BMC Health Services Research</em>, Vol. 18(1), 95</div>
+        <div class="paper-links">
+          <a href="https://bmchealthservres.biomedcentral.com/track/pdf/10.1186/s12913-018-2877-4" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2018</span>
+      </div>
+    </div>
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"The Redistributive Effects of Copayment in Outpatients Prescriptions: Evidence from Lombardy"</div>
+        <div class="paper-authors">Berta P., Martini G., Levaggi R. and Verzillo S.</div>
+        <div class="paper-venue"><em>BMC Health Services Research</em>, Vol. 17(1), 336</div>
+        <div class="paper-links">
+          <a href="https://bmchealthservres.biomedcentral.com/articles/10.1186/s12913-017-2248-6" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2017</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 4: Methodology -->
+  <div class="theme-section">
+    <div class="theme-header">
+      <span class="theme-number">04</span>
+      <h2 class="theme-title">Methodology, Statistics &amp; Data Science</h2>
+    </div>
+
+
+    <div class="paper-card">
+      <div class="paper-main">
+        <div class="paper-title">"%Cem: A SAS Macro to Perform Coarsened Exact Matching"</div>
+        <div class="paper-authors">Berta P., Bossi M. and Verzillo S.</div>
+        <div class="paper-venue"><em>Journal of Statistical Computation and Simulation</em>, Vol. 87(2), pp. 227–238</div>
+        <div class="paper-links">
+          <a href="http://www.tandfonline.com/doi/abs/10.1080/00949655.2016.1203433" target="_blank">Journal</a>
+        </div>
+      </div>
+      <div class="badge-group">
+        <span class="status-badge status-published">Published 2017</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION 5: Book Chapters & Reports -->
+  <div class="theme-section">
+    <div class="theme-header">
+      <span class="theme-number">05</span>
+      <h2 class="theme-title">Book Chapters &amp; Technical Reports</h2>
+    </div>
+
+    <ul class="plain-list">
+      <li>
+        <span class="ref-title">"Administrative Data Access on Firms and Markets"</span>
+        <span class="ref-authors">Duso T., Quatraro F., Santoleri P., Schiersch A. and Verzillo S. (2026)</span><br>
+        In: Berton F. and Paruolo P. (Ed.) <em>Data-Driven Learning in the EU</em>, Springer — <a href="https://link.springer.com/book/9783031990311" target="_blank">Springer</a>
+      </li>
+      <li>
+        <span class="ref-title">"The Impact of COVID-19 Pandemic on Non-deferrable Diseases"</span>
+        <span class="ref-authors">Muzzì S., Berta P., Lovaglio P.G. and Verzillo S. (2025)</span><br>
+        In: Scientific Meeting of the Italian Statistical Society, Springer, pp. 79–85 — <a href="https://link.springer.com/chapter/10.1007/978-3-031-96033-8_14" target="_blank">Springer</a>
+      </li>
+      <li>
+        <span class="ref-title">"Study on the Effectiveness of COVID-Aid on Firms"</span>
+        <span class="ref-authors">Canzian G., Crivellaro E., Duso T., Ferrara A., Sasso A. and Verzillo S. (2024)</span><br>
+        Publications Office of the European Union, JRC135571 — <a href="https://publications.jrc.ec.europa.eu/repository/search?query=JRC135571&sort=relevance" target="_blank">JRC</a>
+      </li>
+      <li>
+        <span class="ref-title">"Topic-Driven Detection and Analysis of Scholarly Data"</span>
+        <span class="ref-authors">Ferrara A., Montanelli S., Verzillo S. (2022)</span><br>
+        In: Checchi D., Jappelli T. and Uricchio A. (eds) <em>Teaching, Research and Academic Careers</em>, Springer — <a href="https://link.springer.com/chapter/10.1007/978-3-031-07438-7_8" target="_blank">Springer</a>
+      </li>
+      <li>
+        <span class="ref-title">"Monitoring Multidimensional Inequalities In The European Union"</span>
+        <span class="ref-authors">Alberti V. et al. (2021)</span><br>
+        EUR 30649 EN, Publications Office of the European Union — <a href="https://publications.jrc.ec.europa.eu/repository/handle/JRC123911" target="_blank">JRC</a>
+      </li>
+      <li>
+        <span class="ref-title">"Positive Externalities of EU Actions on Sustainability of Health Systems"</span>
+        <span class="ref-authors">Guthmuller S., Paruolo P., Verzillo S. (2021)</span><br>
+        In: Baltagi B. and Moscone F. <em>The Sustainability of Health Care Systems in Europe</em>, Emerald — <a href="https://www.emerald.com/insight/content/doi/10.1108/S0573-855520210000295006/full/html" target="_blank">Emerald</a>
+      </li>
+      <li>
+        <span class="ref-title">"Roots and Development of Achievement Gaps"</span>
+        <span class="ref-authors">Van Huizen T., Lovaglio P.G., Passaretta G. et al. (2019)</span><br>
+        ISOTIS Report — <a href="http://www.isotis.org/wp-content/uploads/2019/01/ISOTIS_D1.3-Roots-and-Development-of-Achievement-Gaps.pdf" target="_blank">PDF</a>
+      </li>
+      <li>
+        <span class="ref-title">"The Role of PISA in Regional and Private/Public Debates in Italy"</span>
+        <span class="ref-authors">Checchi D. and Verzillo S. (2018)</span><br>
+        In: Volante L. <em>PISA, Educational Governance, and Transnational Policy</em>, Routledge
+      </li>
+      <li>
+        <span class="ref-title">"Google Scholar as a Citation Database for Non-bibliometric Areas"</span>
+        <span class="ref-authors">Ferrara A., Montanelli S., Verzillo S. (2018)</span><br>
+        In: Bonaccorsi A. <em>The Evaluation of Research in Social Sciences and Humanities</em>, Springer
+      </li>
+      <li>
+        <span class="ref-title">"Feasibility Study on Measuring the Causal Impact of Erasmus+ Actions"</span>
+        <span class="ref-authors">Schnepf S.V., Ghirelli C., Verzillo S. (2017)</span><br>
+        Publications Office of the European Union, JRC105692 — <a href="http://publications.jrc.ec.europa.eu/repository/bitstream/JRC105692/jrc105692_jrc_feasiblityerasmus_final18122017.pdf" target="_blank">PDF</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SECTION 6: Seminars -->
+  <div class="seminars-section">
+    <div class="theme-header">
+      <span class="theme-number">06</span>
+      <h2 class="theme-title">Selected Seminars &amp; Conference Presentations</h2>
+    </div>
+
+    <div class="seminar-year">
+      <span class="year-label">2026</span>
+      <span>EQUIPRICE Mini-Workshop (Cargese, FR), April 27–May 2</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2025</span>
+      <span>Workshop "The Organisation, Economics and Policy of Scientific Research", April 3–4, BETA &amp; University of Strasbourg (FR) · IMT (Invited seminar), June 18, Lucca</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2024</span>
+      <span>ICSSI – International Conference on Science of Science and Innovation, July 1–3, National Academy of Science, Washington D.C. (USA)</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2023</span>
+      <span>NBER Summer Institute 2023 (Science of Science Funding), July 20–21, Cambridge MA (USA) · US Government – FCC Economic Analysis Division Seminar Series (online)</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2022</span>
+      <span>21 LAGV journées, June 6–8 (Marseilles) · Empirical Health Economics Workshop, July 12–14 at JRC Ispra (local organizer)</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2021</span>
+      <span>COMPIE 2021, June 23–25 · Micro HEW – Health Econometrics Workshop, July 21 (local organizer)</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2020</span>
+      <span>VII Health Econometrics Workshop, July 14–17, JRC Ispra (local organizer) · COVER – COVid-19 Empirical Research Webinar, October 30, University of Milan</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2019</span>
+      <span>Health Economics Workshop, DEMM-University of Milan (invited discussant) · The Cowles Foundation Workshop 'Matching: Optimal Transport and Beyond', September 27–28 (Yale School of Management, invited paper)</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2018</span>
+      <span>ESPE Conference, June 25–27 (Antwerp) · EuHEA Conference, July 11–14 (Maastricht) · Health Econometrics Workshop – HEW, July 17–19 (Bergamo)</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2017</span>
+      <span>University of Oxford (Invited Seminar), April 5 · EHEW, May 19–20 (Oslo) · ECINEQ, July 17–19 (New York) · EALE Conference, September 21–23 (St. Gallen)</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2016</span>
+      <span>SASE Annual Conference, June 24–26, UC Berkeley (USA) · Health Econometrics Workshop – HEW, July 22–24 (Bari)</span>
+    </div>
+    <div class="seminar-year">
+      <span class="year-label">2013–15</span>
+      <span>ANVUR (Rome) · IWAEE (Catanzaro) · Applied Economics Meeting (Gran Canaria) · IZA/CEPR ESSLE (Ammersee) · AIEL (Pisa) · EALE (Turin) · ECINEQ (Bari) · SIS (Brescia) · and others</span>
+    </div>
+  </div>
+
+  <!-- Referee -->
+  <div class="referee-section">
+    <div class="theme-header">
+      <span class="theme-number">07</span>
+      <h2 class="theme-title">Referee for</h2>
+    </div>
+    <p class="referee-text">BMC Health Service Research, British Medical Journal, BMJ Open, Economic Modelling, Educational Research for Policy and Practice, Frontiers in Education, Health Economics, Health Policy, Higher Education Quarterly, Infection Ecology &amp; Epidemiology, International Journal of Educational Management, International Journal of Health Policy and Management, International Journal of Industrial Organization, International Journal of Public Health, International Journal for Quality in Health Care, Italian Economic Journal, Journal of Economic Behavior and Organization, PloS One, Public Management Review, Quality and Quantity, Review of Social Economy, RIV – Rassegna Italiana di Valutazione, Scuola Democratica, Statistica Applicata – Italian Journal of Applied Statistics.</p>
+  </div>
+
+  <footer>Last updated: February 2026</footer>
+
+</div>
+</body>
+</html>
