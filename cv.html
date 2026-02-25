@@ -94,56 +94,173 @@
     color: var(--ink);
   }
 
-  .under-construction {
-    margin-top: 48px;
-    padding: 60px 40px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    text-align: center;
+  .cv-section {
+    margin-bottom: 56px;
   }
 
-  .uc-label {
+  .cv-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .contact-item {
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .contact-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
+    font-size: 10px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 20px;
+    margin-bottom: 6px;
   }
 
-  .uc-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
-    font-weight: 300;
-    color: var(--ink);
-    margin-bottom: 16px;
+  .contact-value {
+    color: var(--ink-soft);
   }
 
-  .uc-divider {
-    width: 40px;
-    height: 2px;
-    background: var(--gold);
-    margin: 20px auto;
-  }
-
-  .uc-text {
-    font-family: 'Spectral', serif;
-    font-size: 15px;
-    color: var(--ink-muted);
-    font-weight: 300;
-    line-height: 1.7;
-    max-width: 440px;
-    margin: 0 auto;
-  }
-
-  .uc-text a {
+  .contact-value a {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid var(--accent-light);
+    border-bottom: 1px solid transparent;
     transition: border-color 0.15s;
   }
 
-  .uc-text a:hover { border-color: var(--accent); }
+  .contact-value a:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  .position-item {
+    margin-bottom: 32px;
+    padding-left: 20px;
+    border-left: 2px solid var(--gold-light);
+  }
+
+  .position-period {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .position-title {
+    font-weight: 500;
+    font-size: 16.5px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .position-org {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+
+  .education-item {
+    margin-bottom: 32px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .education-degree {
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .education-details {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+
+  .education-thesis {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--ink-muted);
+  }
+
+  .education-thesis-title {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .affiliation-list {
+    list-style: none;
+  }
+
+  .affiliation-item {
+    margin-bottom: 16px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .affiliation-item:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .affiliation-name {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .affiliation-org {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+
+  .affiliation-link {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .affiliation-link:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  .qualification-box {
+    padding: 24px;
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .qualification-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
 
   footer {
     margin-top: 80px;
@@ -159,6 +276,8 @@
     nav { padding: 0 20px; gap: 20px; }
     .page-wrapper { padding: 40px 20px 80px; }
     .page-header h1 { font-size: 36px; }
+    .cv-section-title { font-size: 22px; }
+    .contact-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -181,12 +300,143 @@
     <h1>Curriculum Vitae</h1>
   </div>
 
-  <div class="under-construction">
-    <div class="uc-label">Coming soon</div>
-    <div class="uc-title">Under Construction</div>
-    <div class="uc-divider"></div>
-    <p class="uc-text">This page is currently being prepared. Please check back soon, or visit the <a href="research.html">Research</a> page in the meantime.</p>
-  </div>
+  <!-- Contact Information -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Contact Information</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-label">Institution</div>
+        <div class="contact-value">
+          European Commission<br>
+          DG Joint Research Centre<br>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Unit</div>
+        <div class="contact-value">
+          Competence Centre on<br>
+          Microeconomic Evaluation (CC-ME)
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Address</div>
+        <div class="contact-value">
+          via E. Fermi 2749<br>
+          20122 - Ispra (VA)<br>
+          Italy
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">
+          <a href="mailto:stefano.verzillo@ec.europa.eu">stefano.verzillo@ec.europa.eu</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Telephone</div>
+        <div class="contact-value">
+          +39 0332-783752
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Positions -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Past Positions</h2>
+    
+    <div class="position-item">
+      <div class="position-period">November 2016 – December 2020</div>
+      <div class="position-title">Research Fellow</div>
+      <div class="position-org">DG Joint Research Centre, European Commission</div>
+    </div>
+
+    <div class="position-item">
+      <div class="position-period">November 2012 – October 2016</div>
+      <div class="position-title">Post Doctoral Fellow</div>
+      <div class="position-org">Department of Economics, Management and Quantitative Methods<br>University of Milan, Italy</div>
+    </div>
+
+    <div class="position-item">
+      <div class="position-period">November 2012 – October 2016</div>
+      <div class="position-title">Research Fellow</div>
+      <div class="position-org"><a href="http://users.unimi.it/labedu/" class="affiliation-link" target="_blank">LABEDU - Labor and Education Laboratory</a><br>University of Milan, Italy</div>
+    </div>
+
+    <div class="position-item">
+      <div class="position-period">November 2009 – Present</div>
+      <div class="position-title">Research Fellow</div>
+      <div class="position-org"><a href="http://www.crisp-org.it/people/" class="affiliation-link" target="_blank">CRISP-Interuniversity Research Centre on Public Services</a><br>University of Milan-Bicocca, Italy</div>
+    </div>
+  </section>
+
+  <!-- Qualifications -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Qualifications</h2>
+    
+    <div class="qualification-box">
+      <div class="qualification-text">
+        <strong>Italian Habilitation for Associate Professor</strong> (Professore di II Fascia) in:<br>
+        • Economic Statistics (ssd 13/D2) 2020–2029<br>
+        • Economic Policy (ssd 13/A2) 2021–2030<br>
+        • Public Economics (ssd 13/A3) 2021–2030
+      </div>
+    </div>
+
+    <div class="qualification-box">
+      <div class="qualification-text">
+        <strong>Member of the PhD Board</strong> of the <a href="https://www.unimib.it/didattica/offerta-formativa/dottorato-ricerca/corsi-dottorato/public-health-epidemiology-statistics-and-economics" class="affiliation-link" target="_blank">PhD Program in Public Health Epidemiology, Statistics and Economics</a> at University of Milan-Bicocca (2023–2025)
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Affiliations -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Other Affiliations</h2>
+    
+    <ul class="affiliation-list">
+      <li class="affiliation-item">
+        <div class="affiliation-name">HEDG - Health Econometrics Data Group</div>
+        <div class="affiliation-org"><a href="https://www.york.ac.uk/economics/hedg/people/" class="affiliation-link" target="_blank">University of York</a></div>
+      </li>
+      <li class="affiliation-item">
+        <div class="affiliation-name">CRISP - Interuniversity Research Centre on Public Services</div>
+        <div class="affiliation-org"><a href="https://www.crisp-org.it/people/" class="affiliation-link" target="_blank">University of Milan-Bicocca</a></div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Education -->
+  <section class="cv-section">
+    <h2 class="cv-section-title">Education</h2>
+    
+    <div class="education-item">
+      <div class="education-degree">PhD in Economics</div>
+      <div class="education-details">
+        University of Milan, Italy, 2013
+      </div>
+      <div class="education-thesis">
+        <strong>Thesis:</strong> <span class="education-thesis-title">"Efficiency and Scientific Productivity in Italian Universities"</span><br>
+        <strong>Examiners:</strong> Prof. E. Rettore (Univ. of Padua), Prof. E. Colombo (Univ. of Milan-Bicocca), Prof. R. Puglisi (Univ. Pavia)<br>
+        <strong>Advisors:</strong> Prof. D. <a href="http://checchi.economia.unimi.it/" class="affiliation-link" target="_blank">Checchi</a> (Univ. Milan) and G. <a href="https://sites.google.com/site/giannidefraja/" class="affiliation-link" target="_blank">De Fraja</a> (Univ. of Nottingham)
+      </div>
+    </div>
+
+    <div class="education-item">
+      <div class="education-degree">M.Sc. in Statistics and Economics</div>
+      <div class="education-details">
+        University of Milan-Bicocca, Italy, 2009<br>
+        <em>110/110 cum laude</em>
+      </div>
+    </div>
+
+    <div class="education-item">
+      <div class="education-degree">B.Sc. in Statistics and Economics</div>
+      <div class="education-details">
+        University of Milan-Bicocca, Italy, 2006
+      </div>
+    </div>
+  </section>
 
   <footer>Last updated: February 2026</footer>
 
