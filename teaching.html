@@ -94,56 +94,130 @@
     color: var(--ink);
   }
 
-  .under-construction {
-    margin-top: 48px;
-    padding: 60px 40px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    text-align: center;
+  .teaching-section {
+    margin-bottom: 56px;
   }
 
-  .uc-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 20px;
-  }
-
-  .uc-title {
+  .teaching-section-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
-    font-weight: 300;
+    font-size: 26px;
+    font-weight: 400;
     color: var(--ink);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .program-block {
+    margin-bottom: 40px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .program-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .program-institution {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    font-style: italic;
     margin-bottom: 16px;
   }
 
-  .uc-divider {
-    width: 40px;
-    height: 2px;
-    background: var(--gold);
-    margin: 20px auto;
+  .course-list {
+    list-style: none;
   }
 
-  .uc-text {
-    font-family: 'Spectral', serif;
-    font-size: 15px;
-    color: var(--ink-muted);
-    font-weight: 300;
+  .course-item {
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
     line-height: 1.7;
-    max-width: 440px;
-    margin: 0 auto;
   }
 
-  .uc-text a {
+  .course-item:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .course-year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .course-title {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .course-hours {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+  }
+
+  .course-link {
     color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid var(--accent-light);
+    border-bottom: 1px solid transparent;
     transition: border-color 0.15s;
   }
 
-  .uc-text a:hover { border-color: var(--accent); }
+  .course-link:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  .eval-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    background: #e8f4f8;
+    color: #2c5282;
+    border: 1px solid #4a90e2;
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+
+  .chart-container {
+    margin-top: 56px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .chart-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .chart-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    height: 280px;
+  }
 
   footer {
     margin-top: 80px;
@@ -159,6 +233,8 @@
     nav { padding: 0 20px; gap: 20px; }
     .page-wrapper { padding: 40px 20px 80px; }
     .page-header h1 { font-size: 36px; }
+    .teaching-section-title { font-size: 22px; }
+    .program-block { padding: 16px; }
   }
 </style>
 </head>
@@ -181,15 +257,314 @@
     <h1>Teaching</h1>
   </div>
 
-  <div class="under-construction">
-    <div class="uc-label">Coming soon</div>
-    <div class="uc-title">Under Construction</div>
-    <div class="uc-divider"></div>
-    <p class="uc-text">This page is currently being prepared. Please check back soon, or visit the <a href="research.html">Research</a> page in the meantime.</p>
+  <!-- PhD ECOSTATDATA -->
+    <div class="program-block">
+      <div class="program-name">PhD in Economics, Statistics and Data Science (ECOSTATDATA)</div>
+      <div class="program-institution">University of Milan-Bicocca</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year">A.A. 2023-2024:</span>
+          <span class="course-title">Potential Outcome and Models for Causal Inference</span> — 
+          <span class="course-hours"><a href="https://www.dems.unimib.it/en/research/phd-economics-statistics-and-data-science" class="course-link" target="_blank">12 hours</a></span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">A.A. 2020-2021:</span>
+          <span class="course-title">Statistical Modelling - Path Analysis, Latent Variable Models, Structural Equation Models</span> — 
+          <span class="course-hours"><a href="https://www.dems.unimib.it/sites/st01/files/Dottorato/070920_calendario%20IV%20Term.pdf" class="course-link" target="_blank">12 hours</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PhD Economics -->
+    <div class="program-block">
+      <div class="program-name">PhD in Economics</div>
+      <div class="program-institution">University of Milan and University of Pavia</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year">A.A. 2018-2019:</span>
+          <span class="course-title">Econometrics - Causal Inference using STATA</span> (with M. Bratti) — 
+          <span class="course-hours">14 hours</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Master AIDA -->
+    <div class="program-block">
+      <div class="program-name">Master AIDA - AI & Data Analytics for Business (Ed. I)</div>
+      <div class="program-institution">Department of Statistics, University of Milan-Bicocca</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year">September/October 2025:</span>
+          <span class="course-title">Statistical Modelling and Machine Learning</span> — 
+          <span class="course-hours">88 hours</span>
+          <a href="https://www.dropbox.com/scl/fi/35eigh2phpsyj5g3cwr9f/Screenshot-2025-10-31-alle-17.13.33.png?rlkey=rie5ttt1h4vie1kji4moh8ila&dl=0" class="eval-badge" target="_blank">Students' eval</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Applied Health Econometrics Summer School -->
+    <div class="program-block">
+      <div class="program-name">Applied Health Econometrics and Health Policy Summer School - AHEHP</div>
+      <div class="program-institution">Brunel University (UK) and University of Bergamo</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year"><a href="https://www.unibg.it/sites/default/files/media/documents/2024-02-27/20240223%20UniBG%20-%20Summer%20School%20-%20programma%20-%20STAMPA.pdf" class="course-link" target="_blank">July 22, 2024</a> and <a href="https://www.unibg.it/sites/default/files/media/documents/2023-03-09/Programme_Summer_School_AHEHP_2023_sito.pdf" class="course-link" target="_blank">July 28, 2023</a>:</span>
+          <span class="course-title">Policy Evaluation and Methods of Causal Inference in Health</span> — 
+          <span class="course-hours">2 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">July 19-22, 2017 and 2018:</span>
+          <span class="course-title">Policy Evaluation: Difference-In-Difference Models + Stata Lab. Session</span> — 
+          <span class="course-hours">4 hours</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Master BI -->
+    <div class="program-block">
+      <div class="program-name">Master of Science in Business Intelligence and Big Data Analytics</div>
+      <div class="program-institution">Department of Statistics, University of Milan-Bicocca (Ed. I to XI)</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year">September/October 2024:</span>
+          <span class="course-title">Statistics and Data Mining</span> — 
+          <span class="course-hours">84 hours</span>
+          <a href="https://urldefense.com/v3/__https://www.dropbox.com/scl/fi/sokaj7xewxnvevocye690/students_eval_masterbi_24.pdf?rlkey=erz335ntn9jdtbuin92kp7fm0&dl=0__;!!DOxrgLBm!CyV0fHmhA5h8tElCOBBdnLTGDyiDP6r3ivtm2O3mA5VRJ69eSIB7uv7pz2VVDwxdNV7BCvyN8W0Ew0lO-4s3wjrQqHzVUcawZNxG$" class="eval-badge" target="_blank">Students' eval</a>
+        </li>
+        <li class="course-item">
+          <span class="course-year">September/October 2023:</span>
+          <span class="course-title">Statistics and Data Mining</span> — 
+          <span class="course-hours">48 hours</span>
+          <a href="https://www.dropbox.com/scl/fi/n77zvf9kytqk7qyxk23lg/Picture-1.png?rlkey=ku3rlgm5lr95rckya0rwtnqr6&dl=0" class="eval-badge" target="_blank">Students' eval</a>
+        </li>
+        <li class="course-item">
+          <span class="course-year">September/October 2022:</span>
+          <span class="course-title">Statistics and Data Mining</span> — 
+          <span class="course-hours">44 hours</span>
+          <a href="https://www.dropbox.com/s/114vzm7lht28ztd/valutazioni_master_bi_2022.jpeg?dl=0" class="eval-badge" target="_blank">Students' eval</a>
+        </li>
+        <li class="course-item">
+          <span class="course-year">September/October 2021:</span>
+          <span class="course-title">Statistics and Data Mining</span> — 
+          <span class="course-hours">40 hours</span>
+          <a href="https://www.dropbox.com/s/5s4n7b00gl4xjlr/MAster_BI_2021_students_eval.jpeg?dl=0" class="eval-badge" target="_blank">Students' eval</a>
+        </li>
+        <li class="course-item">
+          <span class="course-year">September/October 2020:</span>
+          <span class="course-title">Statistics and Data Mining</span> — 
+          <span class="course-hours">36 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">October/December 2019:</span>
+          <span class="course-title">Statistics and Data Mining</span> — 
+          <span class="course-hours">28 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">April/October 2018:</span>
+          <span class="course-title">Statistics and Data Mining</span> — 
+          <span class="course-hours">24 hours</span>
+          <a href="https://capture.dropbox.com/iLpPrS3c3etgDRIv" class="eval-badge" target="_blank">Students' eval</a>
+        </li>
+        <li class="course-item">
+          <span class="course-year">April/September 2017:</span>
+          <span class="course-title">Statistics</span> — 
+          <span class="course-hours">24 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">April/September 2016:</span>
+          <span class="course-title">Statistics</span> — 
+          <span class="course-hours">24 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">September 2015:</span>
+          <span class="course-title">Statistics</span> — 
+          <span class="course-hours">12 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">June 2015:</span>
+          <span class="course-title">Data Mining</span> — 
+          <span class="course-hours">12 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">October 2014 and May 2013:</span>
+          <span class="course-title">Introduction to SAS Software</span> — 
+          <span class="course-hours">8 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">November 2013:</span>
+          <span class="course-title">Familiar Tax-Policies in a Regional Perspective</span> — 
+          <span class="course-hours">8 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">June 2012:</span>
+          <span class="course-title">Microsimulation Methods for Familiar Tax-Policies</span> — 
+          <span class="course-hours">8 hours</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PhD Statistics -->
+    <div class="program-block">
+      <div class="program-name">PhD in Statistics and Mathematical Finance (XXXIII Cycle)</div>
+      <div class="program-institution">Department of Statistics, University of Milan-Bicocca</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year">October 18-19, 2018:</span>
+          <span class="course-title">Potential Outcomes and Models for Causal Inference</span> — 
+          <span class="course-hours">12 hours</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Master Clinical Research -->
+    <div class="program-block">
+      <div class="program-name">Master of Science in Data Management for Clinical Research</div>
+      <div class="program-institution">Department of Statistics, University of Milan-Bicocca (Ed. I to V)</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year">March 2014, February 2015, February 2016, January-February 2017:</span>
+          <span class="course-title">Clinical Research using SAS</span> — 
+          <span class="course-hours">8 hours</span>
+        </li>
+        <li class="course-item">
+          <span class="course-year">January 2013:</span>
+          <span class="course-title">Introduction to SAS Software</span> — 
+          <span class="course-hours">16 hours</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- University of Milan -->
+    <div class="program-block">
+      <div class="program-name">Undergraduate Courses</div>
+      <div class="program-institution">Department of Economics, Management and Quantitative Methods, University of Milan</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year">September-December 2014:</span>
+          <span class="course-title">Introduction to Econometrics and Data Analysis (using Gretl)</span> — 
+          <span class="course-hours">20 hours</span>
+        </li>
+      </ul>
+    </div>
+
+  <!-- Teaching Assistant Section -->
+  <section class="teaching-section">
+    <h2 class="teaching-section-title">Teaching Assistant</h2>
+
+    <div class="program-block">
+      <div class="program-name">Undergraduate Courses</div>
+      <div class="program-institution">Department of Economics, Management and Quantitative Methods, University of Milan</div>
+      <ul class="course-list">
+        <li class="course-item">
+          <span class="course-year">A.Y. 2015-2016:</span>
+          <span class="course-title">Microeconomics</span> (Prof. M. Bratti)
+        </li>
+        <li class="course-item">
+          <span class="course-year">A.Y. 2014-2015, 2015-2016:</span>
+          <span class="course-title">Labor Economics</span> (Prof. D. Checchi and Prof. G. Pica)
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Teaching Activity Chart -->
+  <div class="chart-container">
+    <div class="chart-title">Teaching Activity Over Time</div>
+    <div class="chart-wrapper">
+      <canvas id="teachingChart"></canvas>
+    </div>
   </div>
 
   <footer>Last updated: February 2026</footer>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+  // Teaching hours data by year
+  const teachingData = {
+    labels: ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+    datasets: [{
+      label: 'Teaching Hours',
+      data: [10, 28, 30, 38, 42, 44, 48, 50, 52, 45, 50, 60, 84, 88],
+      backgroundColor: '#4A90E2',
+      borderColor: '#2C5F96',
+      borderWidth: 1
+    }]
+  };
+
+  // Chart configuration
+  const config = {
+    type: 'bar',
+    data: teachingData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Number of Hours',
+            font: {
+              family: 'Spectral, serif',
+              size: 14,
+              weight: '400'
+            },
+            color: '#4a4540'
+          },
+          ticks: {
+            font: {
+              family: 'Spectral, serif',
+              size: 12
+            },
+            color: '#948f88'
+          },
+          grid: {
+            color: '#e0dbd2',
+            drawBorder: false
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Year',
+            font: {
+              family: 'Spectral, serif',
+              size: 14,
+              weight: '400'
+            },
+            color: '#4a4540'
+          },
+          ticks: {
+            font: {
+              family: 'Spectral, serif',
+              size: 12
+            },
+            color: '#948f88'
+          },
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  };
+
+  // Create the chart when DOM is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('teachingChart').getContext('2d');
+    new Chart(ctx, config);
+  });
+</script>
+
 </body>
 </html>
